@@ -5,7 +5,10 @@ import com.auditoria.javers.api.PermissaoController;
 import com.auditoria.javers.model.Permissao;
 import com.auditoria.javers.repositories.PermissaoRepository;
 import jakarta.transaction.Transactional;
+import org.javers.spring.annotation.JaversAuditable;
 import org.springframework.stereotype.Service;
+
+import java.util.UUID;
 
 @Service
 public class PermissaoService {
@@ -16,8 +19,7 @@ public class PermissaoService {
         this.permissaoRepository = permissaoRepository;
     }
 
-
-    @Transactional
+    @JaversAuditable
     public void salvar(PermissaoController.PermissaoDTO permissaoDTO) {
         var permissao = new Permissao();
         permissao.setNome(permissaoDTO.nome());
@@ -25,15 +27,18 @@ public class PermissaoService {
         permissaoRepository.save(permissao);
     }
 
+    @JaversAuditable
     @Transactional
     public void atualizar(PermissaoController.PermissaoDTO permissaoDTO){
         var permissao = permissaoRepository.findById(permissaoDTO.id())
                 .orElseThrow(() -> new IllegalArgumentException("Permissão não encontrada"));
+
         permissao.setNome(permissaoDTO.nome());
         permissao.setDescricao(permissaoDTO.descricao());
         permissaoRepository.save(permissao);
     }
 
+    @JaversAuditable
     @Transactional
     public void deletar(Long id) {
         var permissao = permissaoRepository.findById(id)

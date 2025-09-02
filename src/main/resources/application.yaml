@@ -1,0 +1,59 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  datasource:
+      url: jdbc:h2:mem:fazendario
+      driver-class-name: org.h2.Driver
+      username: sa
+      password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
+
+javers:
+  auditable-aspect-enabled: true
+  type-safe-snapshots: true
+  sql-schema-management: true
+  sql-schema-name: public
+
+logging:
+  level:
+    org.javers: DEBUG
+#  javers:
+#    mappingStyle: FIELD
+#    algorithm: SIMPLE
+#    commitIdGenerator: synchronized_sequence
+#    prettyPrint: true
+#    typeSafeValues: false
+#    initialChanges: true
+#    terminalChanges: true
+#    packagesToScan:
+#    auditableAspectEnabled: true
+#    springDataAuditableRepositoryAspectEnabled: true
+#    prettyPrintDateFormats:
+#      localDateTime: 'dd MMM yyyy, HH:mm:ss'
+#      zonedDateTime: 'dd MMM yyyy, HH:mm:ssZ'
+#      localDate: 'dd MMM yyyy'
+#      localTime: 'HH:mm:ss'
+#    documentDbCompatibilityEnabled: false
+#    objectAccessHook: org.javers.spring.mongodb.DBRefUnproxyObjectAccessHook
+#    snapshotsCacheSize: 5000
+#    snapshotCollectionName: "jv_snapshots"
+#    headCollectionName: "jv_head_id"
+#    schemaManagementEnabled: true
+#    mongodb:
+#      authentication-database: admin
+#      auto-index-creation: true
+#      host: localhost
+#      port: 27017
+#      database: fazendario
+#      username: admin
+#      password: 123
+
+

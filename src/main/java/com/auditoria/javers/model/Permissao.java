@@ -1,13 +1,14 @@
 package com.auditoria.javers.model;
 
 import jakarta.persistence.*;
+import org.javers.spring.annotation.JaversAuditable;
 
 
 import java.util.Objects;
 
+
 @Entity
 @Table(name = "TB_PMS_PERMISSAO")
-
 public class Permissao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
