@@ -6,6 +6,7 @@ import org.javers.spring.annotation.JaversSpringDataAuditable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+@JaversSpringDataAuditable
 @Repository
 public interface PermissaoRepository extends JpaRepository<Permissao, Long> {
 

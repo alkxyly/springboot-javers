@@ -17,7 +17,8 @@ public class PermissaoService {
         this.permissaoRepository = permissaoRepository;
     }
 
-    @JaversAuditable
+
+    @Transactional
     public void salvar(PermissaoController.PermissaoDTO permissaoDTO) {
         var permissao = new Permissao();
         permissao.setNome(permissaoDTO.nome());
@@ -35,9 +36,9 @@ public class PermissaoService {
         permissaoRepository.save(permissao);
     }
 
-    @JaversAuditable
-    public void deletar(PermissaoController.PermissaoDTO permissaoDTO) {
-        var permissao = permissaoRepository.findById(permissaoDTO.id())
+
+    public void deletar(Long id) {
+        var permissao = permissaoRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Permissão não encontrada"));
         permissaoRepository.delete(permissao);
     }
