@@ -17,7 +17,7 @@ public class PermissaoService {
         this.permissaoRepository = permissaoRepository;
     }
 
-    @JaversAuditable
+   @Transactional
     public void salvar(PermissaoController.PermissaoDTO permissaoDTO) {
         var permissao = new Permissao();
         permissao.setNome(permissaoDTO.nome());
@@ -25,7 +25,7 @@ public class PermissaoService {
         permissaoRepository.save(permissao);
     }
 
-    @JaversAuditable
+
     @Transactional
     public void atualizar(PermissaoController.PermissaoDTO permissaoDTO){
         var permissao = permissaoRepository.findById(permissaoDTO.id())
@@ -36,7 +36,7 @@ public class PermissaoService {
         permissaoRepository.save(permissao);
     }
 
-    @JaversAuditable
+
     @Transactional
     public void deletar(Long id) {
         var permissao = permissaoRepository.findById(id)
