@@ -30,8 +30,14 @@ public class PermissaoController {
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deletar(@PathVariable Long id){
-        permissaoService.deletar(id);
+        permissaoService.deletar(PermissaoDTO.from(id));
     }
 
-   public static record PermissaoDTO(Long id, String nome, String descricao){}
+
+
+   public static record PermissaoDTO(Long id, String nome, String descricao){
+        public static PermissaoDTO from(Long id){
+            return new PermissaoDTO(id, null, null);
+        }
+   }
 }

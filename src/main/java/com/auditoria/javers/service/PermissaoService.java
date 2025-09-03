@@ -26,7 +26,6 @@ public class PermissaoService {
     }
 
     @JaversAuditable
-    @Transactional
     public void atualizar(PermissaoController.PermissaoDTO permissaoDTO){
         var permissao = permissaoRepository.findById(permissaoDTO.id())
                 .orElseThrow(() -> new IllegalArgumentException("Permissão não encontrada"));
@@ -37,9 +36,8 @@ public class PermissaoService {
     }
 
     @JaversAuditable
-    @Transactional
-    public void deletar(Long id) {
-        var permissao = permissaoRepository.findById(id)
+    public void deletar(PermissaoController.PermissaoDTO permissaoDTO) {
+        var permissao = permissaoRepository.findById(permissaoDTO.id())
                 .orElseThrow(() -> new IllegalArgumentException("Permissão não encontrada"));
         permissaoRepository.delete(permissao);
     }
