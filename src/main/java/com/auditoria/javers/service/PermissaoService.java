@@ -8,8 +8,6 @@ import jakarta.transaction.Transactional;
 import org.javers.spring.annotation.JaversAuditable;
 import org.springframework.stereotype.Service;
 
-import java.util.UUID;
-
 @Service
 public class PermissaoService {
 

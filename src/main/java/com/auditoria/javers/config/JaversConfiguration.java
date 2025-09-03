@@ -15,7 +15,8 @@ public class JaversConfiguration {
     private static class SimpleAuthorProvider implements AuthorProvider {
         @Override
         public String provide() {
-            return "0623545455";
+            return "UUID_USUARIO_AUDITOR";
+
         }
     }
 }
